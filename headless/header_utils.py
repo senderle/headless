@@ -1,9 +1,9 @@
 # headless.py
 #
-# This is a lightly modified version of the HeaderFinder.py script form 
+# This is a lightly modified version of the HeaderFinder.py script form
 # Ted Underwood's Data Munging repo: https://github.com/tedunderwood/DataMunging
-# 
-# That repo doesn't have a license, but I've received permission from Ted to 
+#
+# That repo doesn't have a license, but I've received permission from Ted to
 # use this and release it publicly.
 
 import os
@@ -13,7 +13,7 @@ import zipfile
 from difflib import SequenceMatcher
 from .rn import roman_numeral_set as _rnset
 
-# These three functions are taken from HathiTrust example code; similarly 
+# These three functions are taken from HathiTrust example code; similarly
 # unlicensed (to the best of my knowledge).
 
 def _textfile_to_lines(file):
@@ -45,9 +45,9 @@ def load_pages(path):
         vol = volume_from_folder(path)
     else:
         vol = volume_from_zip(path)
-    
+
     pages, removed = remove_headers(vol)
-    return pages
+    return [''.join(line for line in page) for page in pages]
 
 # Scans a list of pages for running headers, which we understand as lines, near
 # the top of a page, that are repeated within the space of two pages,
