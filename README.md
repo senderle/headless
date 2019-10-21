@@ -3,7 +3,9 @@ Strip headers from full-text documents in HathiTrust
 
 ## Installation
 
+```
 pip install git+https://github.com/senderle/headless#egg=headless
+```
 
 ## Usage
 
@@ -17,5 +19,7 @@ with headers stripped using a lightly modified version of Ted Underwood's
 [HeaderFinder](https://github.com/tedunderwood/DataMunging/tree/master/runningheaders) code
 (released with permission from [@tedunderwood](https://github.com/tedunderwood)).
 
+```
 from headless import load_pages
 pages = load_pages('path/to/htarchive_dir_or.zip')
+```
