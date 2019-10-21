@@ -260,15 +260,16 @@ def remove_headers(pagelist, romannumerals=_rnset):
     # Now we have a list of sets that contain tuples
     # representing headers, in original page order, with empty sets where no headers
     # were found. We can now use the line indexes in the tuples to pop out the
-    # relevant lines.
+    # relevant lines. (We don't literally use pop because that would cause
+    # the line indices to fall out of alignment with the true list; instead,
+    # we just replace the headers with empty lines.)
 
     assert len(pagelist) == len(repeated)
     removed = list()
     for page, headerset in zip(pagelist, repeated):
         for header in headerset:
             lineindex = header[1]
-            # Using pop here isn't too inefficient because there will only be
-            # 1-2 header lines in the vast majority of cases.
-            removed.append(page.pop(lineindex))
+            removed.append(page[lineindex])
+            page[lineindex] = '\n'
 
     return pagelist, removed
