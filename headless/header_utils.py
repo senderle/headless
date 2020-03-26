@@ -11,6 +11,8 @@ import glob
 import zipfile
 
 from difflib import SequenceMatcher
+from codecs import decode
+
 from .rn import roman_numeral_set as _rnset
 
 # These three functions are taken from HathiTrust example code; similarly
@@ -36,7 +38,7 @@ def volume_from_zip(file):
         volume = list()
         for textfile in [file for file in sorted(z.namelist()) if file.endswith(".txt")]:
             with z.open(textfile) as zf:
-                volume.append(list(map(str, zf.readlines())))
+                volume.append(list(map(decode, zf.readlines())))
 
         return volume
 
