@@ -38,6 +38,9 @@ def volume_from_zip(file):
         volume = list()
         for textfile in [file for file in sorted(z.namelist()) if file.endswith(".txt")]:
             with z.open(textfile) as zf:
+                # This is quite lazy and relies on the fact that the
+                # default encoding arg for `decode` is `utf-8`.
+                # Would be better to accept and pass an encoding arg.
                 volume.append(list(map(decode, zf.readlines())))
 
         return volume
