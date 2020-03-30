@@ -2,8 +2,8 @@ import re
 from collections import defaultdict
 from typing import List, TypeVar, Set, Iterator, Optional, Tuple, Dict
 
-from htrc.models import Page, PageStructure
-from htrc.utils import clean_text, levenshtein, pairwise_combine_within_distance, flatten, group_consecutive_when
+from .models import Page, PageStructure
+from .utils import clean_text, levenshtein, pairwise_combine_within_distance, flatten, group_consecutive_when
 
 T = TypeVar('T', bound=Page)
 U = TypeVar('U', bound=PageStructure)
