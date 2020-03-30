@@ -11,12 +11,10 @@ import os
 import glob
 import zipfile
 
-from difflib import SequenceMatcher
 from codecs import decode
 
 from htrc.models import HtrcPage
 from htrc.runningheaders import parse_page_structure
-from .rn import roman_numeral_set as _rnset
 
 # These three functions are taken from HathiTrust example code; similarly
 # unlicensed (to the best of my knowledge).
