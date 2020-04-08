@@ -67,18 +67,13 @@ def levenshtein(s: str, t: str, insert_cost: int = 1, delete_cost: int = 1, repl
     return v0[len0]
 
 
-def pairwise_combine_within_distance(xs: List[T], n: int) -> List[Tuple[T, T]]:
+def pairwise_combine_within_distance(xs: List[T],
+                                     n: int) -> Iterator[Tuple[T, T]]:
     if not xs:
-        return []
-
-    result = []
-    x, xs = xs[0], xs[1:]
-
-    while xs:
-        result = result + [(x, v) for v in xs[:n - 1]]
-        x, xs = xs[0], xs[1:]
-
-    return result
+        return
+    for i in range(0, len(xs) - n + 1):
+        for j in range(i, i + n):
+            yield (xs[i], xs[j])
 
 
 def group_consecutive_when(xs: List[T], pred: Callable[[T, T], bool]) -> Iterator[List[T]]:

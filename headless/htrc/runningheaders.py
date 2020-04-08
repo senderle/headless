@@ -2,8 +2,10 @@ import re
 from collections import defaultdict
 from typing import List, TypeVar, Set, Iterator, Optional, Tuple, Dict
 
+from editdistance import eval as levenshtein
+
 from .models import Page, PageStructure
-from .utils import clean_text, levenshtein, pairwise_combine_within_distance, flatten, group_consecutive_when
+from .utils import clean_text, pairwise_combine_within_distance, flatten, group_consecutive_when
 
 T = TypeVar('T', bound=Page)
 U = TypeVar('U', bound=PageStructure)
