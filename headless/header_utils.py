@@ -59,4 +59,4 @@ def load_pages(path):
         vol = volume_from_zip(path)
 
     pages = parse_page_structure(vol)
-    return ['\n'.join(line for line in page.body) for page in pages]
+    return [page.body for page in pages]
